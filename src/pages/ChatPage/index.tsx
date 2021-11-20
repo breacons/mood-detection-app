@@ -94,7 +94,7 @@ export const ChatPage = () => {
   };
 
   return (
-    <Layout className="layout" style={{ height: '100vh' }}>
+    <Layout className="layout" style={{ height: '100vh', background: '#222331' }}>
       <Header
         style={{
           background: '#3F4354',
@@ -152,7 +152,6 @@ export const ChatPage = () => {
           flex: 'auto',
           flexDirection: 'column',
           overflowY: 'scroll',
-          background: '#222331'
         }}
         ref={messagesRef}
       >
@@ -167,7 +166,9 @@ export const ChatPage = () => {
           />
         ))}
       </div>
-      <Footer style={{ textAlign: 'center', padding: 10, background: '#3F4354' }}>
+      <Footer
+        style={{ textAlign: 'center', padding: 10, background: '#3F4354', margin: '16px 8px' }}
+      >
         <Input.Group compact>
           <Input
             style={{ width: 'calc(100% - 40px)', textAlign: 'start' }}
