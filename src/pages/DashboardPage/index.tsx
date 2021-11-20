@@ -7,7 +7,7 @@ const { Title } = Typography;
 export const DashboardPage = () => {
   return (
     <div>
-      <Title>hello</Title>
+      <Title>DashboardPage</Title>
       <Button>Hallo</Button>
     </div>
   );

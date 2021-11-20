@@ -11,8 +11,8 @@ export type SendChatMessagePayload = MessagePayload & {
 export type ChatMessageReceivedPayload = MessagePayload & {
   authorId: string;
   message: string;
-  rejected: boolean;
-  rejectReason: string;
+  rejected?: boolean;
+  rejectReason?: string;
 };
 
 export type StatisticsUpdatePayload = MessagePayload & {
