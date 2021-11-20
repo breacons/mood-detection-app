@@ -1,14 +1,14 @@
 import React from 'react';
 import { Button } from 'antd';
-import { Typography } from 'antd';
 
-const { Title } = Typography;
+import VideoFeed from '../../components/VideoFeed';
+
+
 
 export const DashboardPage = () => {
   return (
     <div>
-      <Title>DashboardPage</Title>
-      <Button>Hallo</Button>
+      <VideoFeed />
     </div>
   );
 };
