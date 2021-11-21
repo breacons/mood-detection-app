@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StatisticsUpdatePayload } from '../../types';
 import type { RootState } from '../store';
-
+import _ from 'lodash';
 type StatusMessage = {
   createdAt: string;
   message: string;
@@ -61,6 +61,12 @@ export const statisticsSlice = createSlice({
       state.moodBelowTresholdCount = action.payload.moodBelowTresholdCount;
     },
     updateStatus: (state, action: PayloadAction<StatusMessage>) => {
+      const last = _.last(state.statusMessages);
+
+      if (last && last.message.includes('Angry mood detected') && action.payload.message.includes('Angry mood detected')){
+        return;
+      }
+
       state.statusMessages.push(action.payload);
     },
   },

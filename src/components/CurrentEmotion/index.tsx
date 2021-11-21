@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Statistic } from 'antd';
+import { Card, Col, Row, Space, Statistic } from 'antd';
 import { ArrowUpOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { selectLastEmotion } from '../../state/reducers/emotionsReducer';
@@ -18,7 +18,7 @@ export const CurrentEmotion = () => {
       color = '#f5222d';
     } else if (happy >= neutral) {
       text = 'Happy';
-      color =  '#52c41a';
+      color = '#52c41a';
     } else {
       text = 'Neutral';
       color = '#faad14';
@@ -26,16 +26,32 @@ export const CurrentEmotion = () => {
   }
 
   return (
-    <Card>
-      <Statistic
-        title="Current Mood"
-        value={text}
-        // precision={2}
-        valueStyle={{ color: color }}
-        // prefix={<ArrowUpOutlined />}
-        // suffix="%"
-      />
-    </Card>
+    <Row gutter={24}>
+      <Col span={12}>
+        <Card>
+          <Statistic
+            title="Current Mood"
+            value={text}
+            // precision={2}
+            valueStyle={{ color: color }}
+            // prefix={<ArrowUpOutlined />}
+            // suffix="%"
+          />
+        </Card>
+      </Col>
+      <Col span={12}>
+        <Card>
+          <Statistic
+            title="Change Frequency"
+            value='Above Average'
+            // precision={2}
+            valueStyle={{ color: 'white' }}
+            // prefix={<ArrowUpOutlined />}
+            // suffix="%"
+          />
+        </Card>
+      </Col>
+    </Row>
   );
 };
 
