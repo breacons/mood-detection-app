@@ -21,6 +21,7 @@ import Status from '../../components/Status';
 import If from '../../components/If';
 import { DevelopmentChart } from '../../components/DevelopmentChart';
 import { ClockLoader } from 'react-spinners';
+import Badges from '../../components/Badges';
 
 export const DashboardPage = () => {
   const isAccountBlocked = true;
@@ -49,12 +50,12 @@ export const DashboardPage = () => {
                 </Card>
               </Col>
               <Col span={10}>
-                <Card title="Gamer Profile">
+                <Card title="Gamer Profile" extra={<Badges />}>
                   <List.Item.Meta
                     avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
                     title={<a href="https://ant.design">Gregorio Maximus</a>}
                     description="Member since 2018"
-                  />
+                  ></List.Item.Meta>
                   <Divider />
                   <DevelopmentChart />
                   <Typography.Text
@@ -73,7 +74,7 @@ export const DashboardPage = () => {
                       value={9.3}
                       precision={2}
                       valueStyle={{ color: '#cf1322' }}
-                      prefix={<ArrowUpOutlined />}
+            x          prefix={<ArrowUpOutlined />}
                       suffix="%"
                     />
                   </Card>
