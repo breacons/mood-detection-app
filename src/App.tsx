@@ -10,7 +10,7 @@ function App() {
   return (
     <Routes>
       <Route path="dashboard" element={<DashboardPage />} />
-      <Route path="chat" element={<ChatPage />} />
+      <Route path="chat/*" element={<ChatPage />} />
     </Routes>
   );
 }
