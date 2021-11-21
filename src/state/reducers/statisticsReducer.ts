@@ -66,17 +66,21 @@ export const statisticsSlice = createSlice({
       const last = _.last(state.statusMessages);
 
       if (
-        last &&
+        last && last.message &&
         last.message.includes('Angry mood detected') &&
         action.payload.message.includes('Angry mood detected')
       ) {
         return;
       }
 
-      fetch(BACKEND_URL + '/mock/', {
-        method: 'POST',
-        body: JSON.stringify({ payload: action.payload, type: 'STATUS_UPDATE' }),
-      });
+      // fetch(BACKEND_URL + '/mock', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Accept': 'application/json',
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({ payload: action.payload, type: 'STATUS_UPDATE' }),
+      // });
       state.statusMessages.push(action.payload);
     },
   },
