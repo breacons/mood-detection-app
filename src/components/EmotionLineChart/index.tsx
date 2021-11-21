@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 
 const emotionCategories = ['happy', 'neutral',   'angry',];
 
-export const EmotionChart = () => {
+export const EmotionLineChart = () => {
   const emotions = useSelector(selectEmotionsHistory);
   // const [data, setData] = useState([]);
 

@@ -6,7 +6,7 @@ import { priorityToColor } from '../../state/reducers/statisticsReducer';
 export const Logs = () => {
   const statusMessages = useAppSelector((state) => state.profile.statusMessages);
   return (
-    <Card title="Default size card">
+    <Card title="Gamer History">
       <Timeline reverse={true}>
         {statusMessages.map((message, index) => (
           <Timeline.Item color={priorityToColor[message.priority]} key={index}>

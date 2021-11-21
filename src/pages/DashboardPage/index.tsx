@@ -25,7 +25,9 @@ import { DevelopmentChart } from '../../components/DevelopmentChart';
 import Badges from '../../components/Badges';
 import { useAppSelector } from '../../state/hooks';
 import profileImage from './images/profile.jpg';
+import CurrentEmotion from '../../components/CurrentEmotion';
 import { Logs } from './Logs';
+import {EmotionLineChart} from "../../components/EmotionLineChart";
 
 const { Header, Content, Footer } = Layout;
 
@@ -49,8 +51,9 @@ export const DashboardPage = () => {
                   <VideoFeed />
                 </Col>
                 <Col span={10}>
+                  <CurrentEmotion />
                   <Card>
-                    <EmotionChart />
+                    <EmotionLineChart />
                   </Card>
                 </Col>
               </Row>
@@ -66,7 +69,7 @@ export const DashboardPage = () => {
                       avatar={<Avatar src={profileImage} />}
                       title={<a href="https://ant.design">Gregorio Maximus</a>}
                       description="Member since 2018"
-                    ></List.Item.Meta>
+                    />
                     <Divider />
                     <DevelopmentChart />
                     <Typography.Text
