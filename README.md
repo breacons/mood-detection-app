@@ -1,3 +1,31 @@
+# Hi Junctioner!
+This is the frontend for our safe chat application. It can be considered as two separate app:
+- /dashboard Is the "internal" screen of what the computer vision sees and analyses
+- /chat Is what the user would see when using a chat application that integrated our APIs and components
+
+# How to test
+If you don't have our backend running, you can check out the games and flows included in this app by visiting a couple of paths:
+
+Different games to play:
+
+- /chat/break?next=meditate
+- /chat/break?next=rage
+- /chat/break?next=youtube
+
+Receiving a badge:
+- /chat/break/badge?id=2
+- /chat/break/badge?id=4
+
+Viewing a badge collection
+- /chat/break/collection
+
+With the backend running everything should just work. To trigger some backend flows, you can push messages to different sockets that trigger the above flows as well. Check /services/socket/index.ts for more.
+
+# Video demo
+Our amazing Kristof made a beautiful demo of all of these flows and we even show our acting skills. Check it out here: [WE DONT HAVE A LINK YET]
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
