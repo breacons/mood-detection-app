@@ -25,7 +25,10 @@ export const Collection = () => {
   const mockBadges = [2, 4, 5, 6];
   return (
     <>
-      <Row style={{ width: '80%', marginBottom: 24, justifyContent: 'center' }} align="middle">
+      <Row
+        style={{ width: '80%', maxWidth: 600, marginBottom: 24, justifyContent: 'center' }}
+        align="middle"
+      >
         {mockBadges.map((badgeId, index) => (
           <BadgeItem key={index} badgeId={badgeId} index={index} />
         ))}
