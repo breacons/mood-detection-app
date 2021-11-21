@@ -2,6 +2,7 @@ import { Button, Typography } from 'antd';
 const { Title } = Typography;
 import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import { ReceivedBadge } from './badges/ReceivedBadge';
 
 import { MeditationTask } from './tasks/Meditation';
 import { RageEnterKeyTask } from './tasks/Rage';
@@ -31,6 +32,7 @@ export const Overlay = (props: { visible: boolean }) => {
       <Routes>
         <Route path="meditate" element={<MeditationTask />} />
         <Route path="rage" element={<RageEnterKeyTask />} />
+        <Route path="badge" element={<ReceivedBadge />} />
         <Route
           path="/"
           element={
@@ -41,7 +43,7 @@ export const Overlay = (props: { visible: boolean }) => {
                 Seems like you are a bit stressed out. <br /> Lets take a short break before
                 reaching out to others.
               </Title>
-              <Button type="primary" size="large" onClick={() => navigate('/chat/break/task')}>
+              <Button type="primary" size="large" onClick={() => navigate('/chat/break/rage')}>
                 Show me How
               </Button>
             </>
