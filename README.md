@@ -1,4 +1,5 @@
 # Hi Junctioner!
+CHECK OUT OUR VIDEO: https://www.youtube.com/watch?v=VzC_-I_MC1s
 This is the frontend for our safe chat application. It can be considered as two separate app:
 - /dashboard Is the "internal" screen of what the computer vision sees and analyses
 - /chat Is what the user would see when using a chat application that integrated our APIs and components
@@ -24,7 +25,7 @@ With the backend running everything should just work. To trigger some backend fl
 This PoC should give you a pretty good idea of what we have in mind. Surely there are countless things we could improve on, but we hope it gets the message across! Let us know what you think.
 
 # Video demo
-Our amazing Kristof made a beautiful demo of all of these flows and we even show our acting skills. Check it out here: [WE DONT HAVE A LINK YET]
+Our amazing Kristof made a beautiful demo of all of these flows and we even show our acting skills. Check it out here: https://www.youtube.com/watch?v=VzC_-I_MC1s
 
 
 
