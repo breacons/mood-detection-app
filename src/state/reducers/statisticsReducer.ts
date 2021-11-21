@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StatisticsUpdatePayload } from '../../types';
 import type { RootState } from '../store';
 import _ from 'lodash';
+import socket from '../../services/socket';
+import { BACKEND_URL } from '../../config';
 type StatusMessage = {
   createdAt: string;
   message: string;
@@ -63,10 +65,18 @@ export const statisticsSlice = createSlice({
     updateStatus: (state, action: PayloadAction<StatusMessage>) => {
       const last = _.last(state.statusMessages);
 
-      if (last && last.message.includes('Angry mood detected') && action.payload.message.includes('Angry mood detected')){
+      if (
+        last &&
+        last.message.includes('Angry mood detected') &&
+        action.payload.message.includes('Angry mood detected')
+      ) {
         return;
       }
 
+      fetch(BACKEND_URL + '/mock/', {
+        method: 'POST',
+        body: JSON.stringify({ payload: action.payload, type: 'STATUS_UPDATE' }),
+      });
       state.statusMessages.push(action.payload);
     },
   },

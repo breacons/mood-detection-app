@@ -95,4 +95,12 @@ socket.on('RECEIVED_BADGE', (message: any) => {
   });
 });
 
+socket.on('STATUS_UPDATE', (message: any) => {
+  updateStatus({
+    createdAt: new Date().toISOString(),
+    message: message.message,
+    priority: message.priority,
+  });
+});
+
 export default socket;
