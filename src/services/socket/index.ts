@@ -29,13 +29,14 @@ socket.on(TYPE_DETECTED_EMOTION, (message: DetectedEmotionPayload[]) => {
   }
 });
 
-socket.on(ChatMessageReceivedType, ([message]: ChatMessageReceived[]) => {
+socket.on(ChatMessageReceivedType, (message: ChatMessageReceived) => {
+  console.log('ChatMessageReceivedType', message)
   if (message) {
     store.dispatch(onMessageReceived(message.payload));
   }
 });
 
-socket.on(ChatDisabledType, ([message]: ChatDisabled[]) => {
+socket.on(ChatDisabledType, (message: ChatDisabled) => {
   if (message) {
     store.dispatch(navigateToRoute(`/chat/break/?next=${message.payload.breakMode}`));
   }

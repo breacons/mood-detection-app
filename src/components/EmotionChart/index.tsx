@@ -6,7 +6,7 @@ import { selectEmotionsHistory, selectLastEmotion } from '../../state/reducers/e
 import _ from 'lodash';
 import dayjs from 'dayjs';
 
-const emotionCategories = ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral'];
+const emotionCategories = ['angry', 'happy', 'sad', 'surprise', 'neutral'];
 
 export const EmotionChart = () => {
   const emotions = useSelector(selectEmotionsHistory);

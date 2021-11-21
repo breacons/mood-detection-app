@@ -74,7 +74,7 @@ export const DashboardPage = () => {
                       value={9.3}
                       precision={2}
                       valueStyle={{ color: '#cf1322' }}
-            x          prefix={<ArrowUpOutlined />}
+                      prefix={<ArrowUpOutlined />}
                       suffix="%"
                     />
                   </Card>
