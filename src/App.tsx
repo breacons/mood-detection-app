@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router';
 
 import ChatPage from './pages/ChatPage';
 import DashboardPage from './pages/DashboardPage';
+import './services/socket'
 
 function App() {
   return (
