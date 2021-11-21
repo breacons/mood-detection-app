@@ -15,7 +15,7 @@ export const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    navigateToRoute: (state, action: PayloadAction<string>) => {
+    navigateToRoute: (state, action: PayloadAction<string | undefined>) => {
       state.route = action.payload;
     },
   },
