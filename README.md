@@ -21,6 +21,8 @@ Viewing a badge collection
 
 With the backend running everything should just work. To trigger some backend flows, you can push messages to different sockets that trigger the above flows as well. Check /services/socket/index.ts for more.
 
+This PoC should give you a pretty good idea of what we have in mind. Surely there are countless things we could improve on, but we hope it gets the message across! Let us know what you think.
+
 # Video demo
 Our amazing Kristof made a beautiful demo of all of these flows and we even show our acting skills. Check it out here: [WE DONT HAVE A LINK YET]
 
