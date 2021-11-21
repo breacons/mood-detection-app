@@ -88,19 +88,19 @@ socket.on(ChatDisabledType, (message: ChatDisabled) => {
 
 socket.on('RECEIVED_BADGE', (message: any) => {
   store.dispatch(navigateToRoute('/chat/break/badge?id=' + message.payload.badgeId));
-  updateStatus({
+  store.dispatch(updateStatus({
     createdAt: new Date().toISOString(),
     message: 'Received a new badge',
     priority: 'info',
-  });
+  }));
 });
 
 socket.on('STATUS_UPDATE', (message: any) => {
-  updateStatus({
+  store.dispatch(updateStatus({
     createdAt: new Date().toISOString(),
-    message: message.message,
-    priority: message.priority,
-  });
+    message: message.payload.message,
+    priority: message.payload.priority,
+  }));
 });
 
 export default socket;
