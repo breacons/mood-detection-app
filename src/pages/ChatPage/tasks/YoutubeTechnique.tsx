@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useCountdown } from '..';
 const { Title } = Typography;
 import React from 'react';
+import { useAppDispatch } from '../../../state/hooks';
+import { setBlocked } from '../../../state/reducers/uiReducer';
 
 export const YoutubeTechnique = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const remainingSeconds = useCountdown(20);
   return (
     <>
@@ -20,7 +23,14 @@ export const YoutubeTechnique = () => {
         Watch this Youtube video to learn more about being a calmer player. You can skip the video
         in {remainingSeconds} seconds.
       </Title>
-      <Button type="primary" disabled={remainingSeconds > 0} onClick={() => navigate('/chat')}>
+      <Button
+        type="primary"
+        disabled={remainingSeconds > 0}
+        onClick={() => {
+          dispatch(setBlocked(false));
+          navigate('/chat');
+        }}
+      >
         Back to Chat
       </Button>
     </>

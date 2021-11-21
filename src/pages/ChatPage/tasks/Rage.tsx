@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useCountdown } from '..';
 const { Title } = Typography;
 import React, { useEffect, useMemo, useState } from 'react';
+import { useAppDispatch } from '../../../state/hooks';
+import { setBlocked } from '../../../state/reducers/uiReducer';
 
 export const RageEnterKeyTask = () => {
   const remainingSeconds = useCountdown(20);
+  const dispatch = useAppDispatch();
   const [keypressCount, setKeyPressCount] = useState<number>(0);
   const navigate = useNavigate();
   const record = useMemo(() => window.localStorage.getItem('smashRecord') || '0', []);
@@ -45,7 +48,14 @@ export const RageEnterKeyTask = () => {
         Channel that rage somewhere else. Try to beat your own record ({record}) of{' '}
         <strong>smashing the Enter</strong> key now. You have {remainingSeconds} seconds left.
       </Title>
-      <Button type="primary" disabled={remainingSeconds > 0} onClick={() => navigate('/chat')}>
+      <Button
+        type="primary"
+        disabled={remainingSeconds > 0}
+        onClick={() => {
+          dispatch(setBlocked(false));
+          navigate('/chat');
+        }}
+      >
         Back to Chat
       </Button>
     </div>

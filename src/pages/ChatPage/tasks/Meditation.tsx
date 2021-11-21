@@ -4,9 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useCountdown } from '..';
 const { Title } = Typography;
 import React from 'react';
+import { useAppDispatch } from '../../../state/hooks';
+import { setBlocked } from '../../../state/reducers/uiReducer';
 
 export const MeditationTask = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const remainingSeconds = useCountdown(20);
   return (
     <>
@@ -16,7 +19,14 @@ export const MeditationTask = () => {
         meters away. <br />
         This will help you relax and it is also good for your eyes.
       </Title>
-      <Button type="primary" disabled={remainingSeconds > 0} onClick={() => navigate('/chat')}>
+      <Button
+        type="primary"
+        disabled={remainingSeconds > 0}
+        onClick={() => {
+          dispatch(setBlocked(false));
+          navigate('/chat');
+        }}
+      >
         Back to Chat
       </Button>
     </>

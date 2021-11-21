@@ -3,8 +3,11 @@ import { Layout, Typography } from 'antd';
 const { Header } = Layout;
 const { Title, Text } = Typography;
 import React from 'react';
+import { useAppSelector } from '../../state/hooks';
 
 export const HeaderComponent = () => {
+  const isOnline = useAppSelector((state) => state.ui.connected);
+
   return (
     <Header
       style={{
@@ -40,8 +43,9 @@ export const HeaderComponent = () => {
           justifyContent: 'center',
         }}
       >
-        <Text style={{ height: 16, lineHeight: '16px', color: '#44D7B6' }}>1234</Text>
-        <Text style={{ height: 14, lineHeight: '14px', fontSize: '10px' }}>ONLINE</Text>
+        <Text style={{ height: 16, lineHeight: '16px', color: isOnline ? '#44D7B6' : 'red' }}>
+          {isOnline ? 'Connected' : 'Disconnected'}
+        </Text>
         <div
           style={{
             width: 0,

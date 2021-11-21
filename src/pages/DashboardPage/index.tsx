@@ -22,9 +22,10 @@ import If from '../../components/If';
 import { DevelopmentChart } from '../../components/DevelopmentChart';
 import { ClockLoader } from 'react-spinners';
 import Badges from '../../components/Badges';
+import { useAppSelector } from '../../state/hooks';
 
 export const DashboardPage = () => {
-  const isAccountBlocked = true;
+  const isAccountBlocked = useAppSelector((state) => state.ui.isBlocked);
 
   return (
     <div>
