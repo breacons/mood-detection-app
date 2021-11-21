@@ -1,6 +1,7 @@
 import { SendOutlined } from '@ant-design/icons';
 import { Button, Input, Layout } from 'antd';
 import React from 'react';
+import socket from '../../services/socket';
 
 import { useAppDispatch } from '../../state/hooks';
 import { sendMessage } from '../../state/reducers/messagesReducer';
@@ -11,6 +12,15 @@ export const InputFooter = () => {
   const dispatch = useAppDispatch();
 
   const onSendClick = () => {
+    socket.emit('SEND_CHAT_MESSAGE', {
+      type: 'SEND_CHAT_MESSAGE',
+      payload: {
+        message: currentMessageText,
+        sender: '00absdc',
+        sentAt: new Date().toUTCString(),
+        authorId: 'Greg',
+      },
+    });
     dispatch(sendMessage({ message: currentMessageText }));
     setCurrentMessageText('');
   };

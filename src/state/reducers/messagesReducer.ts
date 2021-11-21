@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { message } from 'antd';
+import socket from '../../services/socket';
 import { ChatMessageReceivedPayload } from '../../types';
 import type { RootState } from '../store';
 
@@ -20,13 +21,7 @@ export const messagesSlice = createSlice({
       state.messages.push(action.payload);
     },
     sendMessage: (state, action: PayloadAction<{ message: string }>) => {
-      // THIS IS A MOCK FOR NOW
-      state.messages.push({
-        message: action.payload.message,
-        sender: '00absdc',
-        sentAt: new Date().toUTCString(),
-        authorId: 'Greg',
-      });
+      return state;
     },
   },
 });

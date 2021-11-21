@@ -3,6 +3,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 const { Title } = Typography;
 import React from 'react';
 import { Route, Routes, useNavigate, useSearchParams } from 'react-router-dom';
+import { useAppDispatch } from '../../state/hooks';
+import { navigateToRoute } from '../../state/reducers/uiReducer';
+import { Collection } from './badges/Collection';
 
 import { ReceivedBadge } from './badges/ReceivedBadge';
 import { MeditationTask } from './tasks/Meditation';
@@ -10,6 +13,7 @@ import { RageEnterKeyTask } from './tasks/Rage';
 import { YoutubeTechnique } from './tasks/YoutubeTechnique';
 
 export const Overlay = () => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [searchParams, _] = useSearchParams();
   const nextUrl = searchParams.get('next') || 'rage';
@@ -40,6 +44,7 @@ export const Overlay = () => {
           <Route path="rage" element={<RageEnterKeyTask />} />
           <Route path="youtube" element={<YoutubeTechnique />} />
           <Route path="badge" element={<ReceivedBadge />} />
+          <Route path="collection" element={<Collection />} />
           <Route
             path="/"
             element={
@@ -64,7 +69,7 @@ export const Overlay = () => {
                 <Button
                   type="primary"
                   size="large"
-                  onClick={() => navigate('/chat/break/' + nextUrl)}
+                  onClick={() => dispatch(navigateToRoute('/chat/break/' + nextUrl))}
                 >
                   Show me How
                 </Button>
