@@ -12,7 +12,7 @@ import {
   List,
   Avatar,
   Divider,
-  Layout,
+  Layout, Tag,
 } from 'antd';
 
 import VideoFeed from '../../components/VideoFeed';
@@ -23,6 +23,7 @@ import If from '../../components/If';
 import {DevelopmentChart} from '../../components/DevelopmentChart';
 import Badges from '../../components/Badges';
 import {useAppSelector} from '../../state/hooks';
+import profileImage from './images/profile.jpg';
 
 const {Header, Content, Footer} = Layout;
 
@@ -31,8 +32,12 @@ export const DashboardPage = () => {
 
   return (
     <Layout className="layout">
-      <Content style={{padding: '0 50px'}}>
-        <Typography.Title>Dashboard</Typography.Title>
+      <Content style={{padding: '20px 50px'}}>
+        <Space direction='horizontal' size={12}>
+        <Typography.Title>System Internal Operations</Typography.Title>
+        <Typography.Text code>v1.45.34-2</Typography.Text>
+          <Tag color='success'>stable</Tag>
+        </Space>
 
         <Row gutter={24}>
           <Col span={18}>
@@ -56,7 +61,7 @@ export const DashboardPage = () => {
                 <Col span={10}>
                   <Card title="Gamer Profile" extra={<Badges />}>
                     <List.Item.Meta
-                      avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                      avatar={<Avatar src={profileImage} />}
                       title={<a href="https://ant.design">Gregorio Maximus</a>}
                       description="Member since 2018"
                     ></List.Item.Meta>
