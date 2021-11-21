@@ -35,6 +35,7 @@ socket.on(TYPE_DETECTED_EMOTION, (message: DetectedEmotionPayload[]) => {
   if (message && message.length > 0 && message[0]) {
     const emotion = message[0].emotions;
     store.dispatch(onEmotionReceived(emotion));
+
     if (emotion.angry > 0.5) {
       store.dispatch(
         updateStatus({

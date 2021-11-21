@@ -43,7 +43,7 @@ export const EmotionLineChart = () => {
 
   const config = {
     data,
-    height: 334,
+    height: 314,
     xField: 'time',
     yField: 'value',
     seriesField: 'category',
@@ -60,12 +60,14 @@ export const EmotionLineChart = () => {
     },
     legend: {
       position: 'top' as any,
-      label: {
+      itemName: {
+        formatter: (s: string) => _.capitalize(s),
         style: {
           color: 'white',
           fill: 'white',
           fillOpacity: 1,
-          opacity: 1
+          opacity: 1,
+          fontSize: 16
         }
       }
     },
@@ -79,5 +81,5 @@ export const EmotionLineChart = () => {
     },
   };
 
-  return <Area {...config} />;
+  return <Line {...config} />;
 };

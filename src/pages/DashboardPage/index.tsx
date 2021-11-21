@@ -27,7 +27,7 @@ import { useAppSelector } from '../../state/hooks';
 import profileImage from './images/profile.jpg';
 import CurrentEmotion from '../../components/CurrentEmotion';
 import { Logs } from './Logs';
-import {EmotionLineChart} from "../../components/EmotionLineChart";
+import { EmotionLineChart } from '../../components/EmotionLineChart';
 
 const { Header, Content, Footer } = Layout;
 
@@ -36,25 +36,27 @@ export const DashboardPage = () => {
 
   return (
     <Layout className="layout">
-      <Content style={{ padding: '20px 50px' }}>
+      <Content style={{ padding: '30px 50px' }}>
         <Space direction="horizontal" size={12}>
           <Typography.Title>System Internal Operations</Typography.Title>
           <Typography.Text code>v1.45.34-2</Typography.Text>
           <Tag color="success">stable</Tag>
         </Space>
-
+        <Divider style={{marginBottom: 30, marginTop: 10}} />
         <Row gutter={24}>
           <Col span={18}>
             <Space direction="vertical" size={24} style={{ width: '100%' }}>
               <Row gutter={24}>
-                <Col span={14}>
+                <Col span={13}>
                   <VideoFeed />
                 </Col>
-                <Col span={10}>
-                  <CurrentEmotion />
-                  <Card>
-                    <EmotionLineChart />
-                  </Card>
+                <Col span={11}>
+                  <Space direction="vertical" size={24} style={{ width: '100%' }}>
+                    <CurrentEmotion />
+                    <Card>
+                      <EmotionLineChart />
+                    </Card>
+                  </Space>
                 </Col>
               </Row>
               <Row gutter={24}>
@@ -85,21 +87,23 @@ export const DashboardPage = () => {
                     <Card>
                       <Statistic
                         title="Blocked messages"
-                        value={9.3}
-                        precision={2}
+                        value={10}
+                        precision={0}
                         valueStyle={{ color: '#cf1322' }}
                         prefix={<ArrowUpOutlined />}
-                        suffix="%"
+                        style={{height: 83}}
+                        // suffix="%"
                       />
                     </Card>
                     <Card>
                       <Statistic
-                        title="Blocked messages"
+                        title="Completed tasks"
                         value={9.3}
-                        precision={2}
-                        valueStyle={{ color: '#cf1322' }}
-                        prefix={<ArrowUpOutlined />}
-                        suffix="%"
+                        precision={0}
+                        valueStyle={{ color:'#faad14' }}
+                        style={{height: 83}}
+                        // prefix={<ArrowUpOutlined />}
+                        // suffix="%"
                       />
                     </Card>
                   </Space>
@@ -117,6 +121,7 @@ export const DashboardPage = () => {
                     description="The user is temporarily blocked form sending new messages into the chat."
                     type="error"
                     showIcon
+                    style={{height: 113}}
                     // icon={<div style={{marginRight: 14}}><ClockLoader size={18} color={'#a61d24'}/></div>}
                   />
                 )}
@@ -126,6 +131,7 @@ export const DashboardPage = () => {
                     description="Detailed description and advice about successful copywriting."
                     type="success"
                     showIcon
+                    style={{height: 113}}
                   />
                 )}
               />
