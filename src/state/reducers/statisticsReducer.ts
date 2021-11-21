@@ -25,7 +25,28 @@ const initialState: StatisticsState = {
   playerRating: 'N/A',
   rejectedMessageCount: 0,
   moodBelowTresholdCount: 0,
-  statusMessages: [],
+  statusMessages: [
+    {
+      message: 'System starting',
+      priority: 'warning',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      message: 'System started',
+      priority: 'warning',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      message: 'Webcam connected',
+      priority: 'info',
+      createdAt: new Date().toISOString(),
+    },
+    {
+      message: 'Chat server connected',
+      priority: 'info',
+      createdAt: new Date().toISOString(),
+    },
+  ],
 };
 
 export const statisticsSlice = createSlice({

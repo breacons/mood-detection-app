@@ -1,4 +1,5 @@
 import { Avatar, Typography } from 'antd';
+import faker from 'faker';
 import { AnimatePresence, motion } from 'framer-motion';
 const { Text } = Typography;
 import React, { useEffect, useRef } from 'react';
@@ -17,11 +18,11 @@ export const Messages = () => {
     const interval = window.setInterval(() => {
       dispatch(
         onMessageReceived({
-          message: 'This is an example message from someone else',
+          message: faker.lorem.sentence(),
           sender: '00absdc',
           sentAt: new Date().toUTCString(),
-          authorId: 'Maro',
-          rejected: Math.round(Math.random() * 100) % 2 ? true : false,
+          authorId: faker.name.firstName(),
+          rejected: Math.round(Math.random() * 100) < 10 ? true : false,
         }),
       );
     }, 5000);
@@ -79,7 +80,10 @@ export const ChatMessage = (props: {
     >
       <Avatar
         size="large"
-        style={{ marginRight: 16, background: props.isFromMe ? '#2460C5' : '#575B6F' }}
+        style={{
+          marginRight: 16,
+          background: props.isBlocked ? 'darkorange' : props.isFromMe ? '#2460C5' : '#575B6F',
+        }}
       >
         {props.sender.charAt(0)}
       </Avatar>
@@ -87,7 +91,7 @@ export const ChatMessage = (props: {
         <Text style={{ marginBottom: 4 }}>{props.sender}</Text>
         <div
           style={{
-            background: props.isBlocked ? 'gray' : props.isFromMe ? '#2460C5' : '#575B6F',
+            background: props.isBlocked ? 'darkorange' : props.isFromMe ? '#2460C5' : '#575B6F',
             borderRadius: '0px 8px 10px 8px',
             color: 'white',
             padding: '8px 16px',
