@@ -2,10 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import messagesReducer from './reducers/messagesReducer';
 import statisticsReducer from './reducers/statisticsReducer';
+import emotionsReducer from './reducers/emotionsReducer';
+
 export const store = configureStore({
   reducer: {
     messages: messagesReducer,
     profile: statisticsReducer,
+    emotions: emotionsReducer
   },
 });
 
