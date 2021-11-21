@@ -6,6 +6,7 @@ const { Title } = Typography;
 import React, { useEffect, useMemo, useState } from 'react';
 import { useAppDispatch } from '../../../state/hooks';
 import { setBlocked } from '../../../state/reducers/uiReducer';
+import { updateStatus } from '../../../state/reducers/statisticsReducer';
 
 export const RageEnterKeyTask = () => {
   const remainingSeconds = useCountdown(20);
@@ -53,6 +54,13 @@ export const RageEnterKeyTask = () => {
         disabled={remainingSeconds > 0}
         onClick={() => {
           dispatch(setBlocked(false));
+          dispatch(
+            updateStatus({
+              message: 'Calming exercise finished',
+              priority: 'info',
+              createdAt: new Date().toISOString(),
+            }),
+          );
           navigate('/chat');
         }}
       >

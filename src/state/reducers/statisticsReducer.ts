@@ -2,7 +2,21 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StatisticsUpdatePayload } from '../../types';
 import type { RootState } from '../store';
 
-type StatisticsState = Omit<StatisticsUpdatePayload, 'sender' | 'sentAt'>;
+type StatusMessage = {
+  createdAt: string;
+  message: string;
+  priority: 'warning' | 'danger' | 'info';
+};
+
+export const priorityToColor = {
+  warning: 'orange',
+  danger: 'red',
+  info: 'blue',
+};
+
+type StatisticsState = Omit<StatisticsUpdatePayload, 'sender' | 'sentAt'> & {
+  statusMessages: StatusMessage[];
+};
 
 // Define the initial state using that type
 const initialState: StatisticsState = {
@@ -11,6 +25,7 @@ const initialState: StatisticsState = {
   playerRating: 'N/A',
   rejectedMessageCount: 0,
   moodBelowTresholdCount: 0,
+  statusMessages: [],
 };
 
 export const statisticsSlice = createSlice({
@@ -24,10 +39,13 @@ export const statisticsSlice = createSlice({
       state.rejectedMessageCount = action.payload.rejectedMessageCount;
       state.moodBelowTresholdCount = action.payload.moodBelowTresholdCount;
     },
+    updateStatus: (state, action: PayloadAction<StatusMessage>) => {
+      state.statusMessages.push(action.payload);
+    },
   },
 });
 
-export const { onStatisticsUpdated } = statisticsSlice.actions;
+export const { onStatisticsUpdated, updateStatus } = statisticsSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectProfile = (state: RootState) => state.profile;

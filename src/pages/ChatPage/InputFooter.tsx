@@ -34,7 +34,7 @@ export const InputFooter = () => {
           size="large"
           value={currentMessageText}
           onChange={(e) => setCurrentMessageText(e.target.value)}
-          onKeyUp={(e) => e.key === 'Enter' && onSendClick()}
+          onKeyUp={(e) => e.key === 'Enter' && currentMessageText.length !== 0 && onSendClick()}
         />
         <Button
           icon={<SendOutlined />}

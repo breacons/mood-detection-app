@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 export const ReceivedBadge = () => {
   const navigate = useNavigate();
   const [searchParams, _] = useSearchParams();
-  const badgeId = searchParams.get('badge') || '1';
+  const badgeId = searchParams.get('id') || '1';
   return (
     <>
       <AnimatePresence>

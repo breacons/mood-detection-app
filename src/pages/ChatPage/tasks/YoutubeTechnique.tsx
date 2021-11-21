@@ -6,6 +6,7 @@ const { Title } = Typography;
 import React from 'react';
 import { useAppDispatch } from '../../../state/hooks';
 import { setBlocked } from '../../../state/reducers/uiReducer';
+import { updateStatus } from '../../../state/reducers/statisticsReducer';
 
 export const YoutubeTechnique = () => {
   const navigate = useNavigate();
@@ -28,6 +29,13 @@ export const YoutubeTechnique = () => {
         disabled={remainingSeconds > 0}
         onClick={() => {
           dispatch(setBlocked(false));
+          dispatch(
+            updateStatus({
+              message: 'Calming exercise finished',
+              priority: 'info',
+              createdAt: new Date().toISOString(),
+            }),
+          );
           navigate('/chat');
         }}
       >
