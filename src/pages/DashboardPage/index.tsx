@@ -27,7 +27,7 @@ import { useAppSelector } from '../../state/hooks';
 import profileImage from './images/profile.jpg';
 import CurrentEmotion from '../../components/CurrentEmotion';
 import { Logs } from './Logs';
-import {EmotionLineChart} from "../../components/EmotionLineChart";
+import { EmotionLineChart } from '../../components/EmotionLineChart';
 
 const { Header, Content, Footer } = Layout;
 

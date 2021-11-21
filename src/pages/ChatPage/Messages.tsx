@@ -18,11 +18,11 @@ export const Messages = () => {
     const interval = window.setInterval(() => {
       dispatch(
         onMessageReceived({
-          message: faker.lorem.sentence(),
+          message: faker.lorem.sentence(5, 3),
           sender: '00absdc',
           sentAt: new Date().toUTCString(),
           authorId: faker.name.firstName(),
-          rejected: Math.round(Math.random() * 100) < 10 ? true : false,
+          rejected: Math.round(Math.random() * 100) < 0 ? true : false,
         }),
       );
     }, 5000);
