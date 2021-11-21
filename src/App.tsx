@@ -15,7 +15,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (pageToGo) {
+    if (pageToGo && !window.location.pathname.includes('dashboard')) {
       navigate(pageToGo);
       dispatch(navigateToRoute(undefined));
     }
