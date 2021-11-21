@@ -1,4 +1,5 @@
 import { Avatar, Typography } from 'antd';
+import { AnimatePresence, motion } from 'framer-motion';
 const { Text } = Typography;
 import React, { useEffect, useRef } from 'react';
 
@@ -43,16 +44,18 @@ export const Messages = () => {
       }}
       ref={messagesRef}
     >
-      {messages.map((message, index) => (
-        <ChatMessage
-          key={index}
-          message={message.message}
-          sender={message.authorId}
-          sentAt={message.sentAt}
-          isFromMe={message.authorId === 'Greg'}
-          isBlocked={!!message.rejected}
-        />
-      ))}
+      <AnimatePresence>
+        {messages.map((message, index) => (
+          <ChatMessage
+            key={index}
+            message={message.message}
+            sender={message.authorId}
+            sentAt={message.sentAt}
+            isFromMe={message.authorId === 'Greg'}
+            isBlocked={!!message.rejected}
+          />
+        ))}
+      </AnimatePresence>
     </div>
   );
 };
@@ -64,13 +67,15 @@ export const ChatMessage = (props: {
   isBlocked: boolean;
 }) => {
   return (
-    <div
+    <motion.div
       style={{
         padding: 5,
         marginBottom: 20,
         display: 'flex',
         alignItems: 'center',
       }}
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: 1, x: 0 }}
     >
       <Avatar
         size="large"
@@ -102,6 +107,6 @@ export const ChatMessage = (props: {
           {new Date(props.sentAt).toLocaleTimeString(undefined, { timeStyle: 'short' })}
         </Text>
       </div>
-    </div>
+    </motion.div>
   );
 };
