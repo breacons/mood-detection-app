@@ -32,7 +32,14 @@ export const RageEnterKeyTask = () => {
   }, []);
 
   return (
-    <>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
       <Title>{keypressCount} smashes</Title>
       <Title level={5} style={{ textAlign: 'center', marginBottom: 24, maxWidth: '60%' }}>
         Channel that rage somewhere else. Try to beat your own record ({record}) of{' '}
@@ -41,6 +48,6 @@ export const RageEnterKeyTask = () => {
       <Button type="primary" disabled={remainingSeconds > 0} onClick={() => navigate('/chat')}>
         Back to Chat
       </Button>
-    </>
+    </div>
   );
 };

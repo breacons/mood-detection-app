@@ -40,7 +40,7 @@ export const ChatPage = () => {
           </Layout>
         }
       >
-        <Route path="break/*" element={<Overlay visible={true} />} />
+        <Route path="break/*" element={<Overlay />} />
       </Route>
     </Routes>
   );

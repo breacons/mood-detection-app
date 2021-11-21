@@ -1,7 +1,6 @@
 import { Button, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
-import { useCountdown } from '..';
 const { Title } = Typography;
 import React from 'react';
 

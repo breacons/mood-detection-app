@@ -35,6 +35,19 @@ export type ChatEnabledPayload = MessagePayload & {
 export type ChatDisabledPayload = MessagePayload & {
   disabledReason: string;
   details: string;
+  breakMode: 'youtube' | 'rage' | 'meditate';
+};
+
+export const ChatMessageReceivedType = 'CHAT_MESSAGE_RECEIVED';
+export type ChatMessageReceived = {
+  type: typeof ChatMessageReceivedType;
+  payload: ChatMessageReceivedPayload;
+};
+
+export const ChatDisabledType = 'CHAT_DISABLED';
+export type ChatDisabled = {
+  type: typeof ChatDisabledType;
+  payload: ChatDisabledPayload;
 };
 
 export type SocketMessage =
@@ -42,10 +55,7 @@ export type SocketMessage =
       type: 'SEND_CHAT_MESSAGE';
       payload: SendChatMessagePayload;
     }
-  | {
-      type: 'CHAT_MESSAGE_RECEIVED';
-      payload: ChatMessageReceivedPayload;
-    }
+  | ChatMessageReceived
   | {
       type: 'STATISTICS_UPDATE';
       payload: StatisticsUpdatePayload;
@@ -58,10 +68,7 @@ export type SocketMessage =
       type: 'CHAT_ENABLED';
       payload: ChatEnabledPayload;
     }
-  | {
-      type: 'CHAT_DISABLED';
-      payload: ChatDisabledPayload;
-    };
+  | ChatDisabled;
 
 function onMessageReceived(message: SocketMessage) {
   switch (message.type) {
