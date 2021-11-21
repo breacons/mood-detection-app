@@ -6,7 +6,7 @@ import { selectEmotionsHistory, selectLastEmotion } from '../../state/reducers/e
 import _ from 'lodash';
 import dayjs from 'dayjs';
 
-const emotionCategories = ['angry', 'happy', 'sad', 'surprise', 'neutral'];
+const emotionCategories = ['angry', 'happy','neutral'];
 
 export const EmotionChart = () => {
   const emotions = useSelector(selectEmotionsHistory);
@@ -28,12 +28,12 @@ export const EmotionChart = () => {
   const data = useMemo(() => {
     return _.flatten(
       emotions
-        .slice(Math.max(emotions.length - 50, 1))
+        .slice(Math.max(emotions.length - 20, 1))
         .map((item) =>
           emotionCategories.map((category) => ({
             category,
             value: (item as any).emotion[category],
-            time: dayjs.unix(item.time).format(),
+            time: dayjs.unix(item.time).format('HH:mm:ss'),
           })),
         ),
     );
@@ -43,10 +43,12 @@ export const EmotionChart = () => {
 
   const config = {
     data,
+    height: 334,
     xField: 'time',
     yField: 'value',
     seriesField: 'category',
     xAxis: {
+      tickCount: 8
       // type: 'time',
       // min: _.first(data)?.time || 0,
       // max: _.last(data)?.time || 1
@@ -57,7 +59,15 @@ export const EmotionChart = () => {
       position: 'right' as any
     },
     legend: {
-      position: 'right' as any
+      position: 'top' as any,
+      label: {
+        style: {
+          color: 'white',
+          fill: 'white',
+          fillOpacity: 1,
+          opacity: 1
+        }
+      }
     },
     yAxis: {
       min: 0,
